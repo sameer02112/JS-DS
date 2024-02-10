@@ -47,3 +47,42 @@ function binarySearch(arr,start,end,target){
 let res = binarySearch(binaryArr, start,end,target);
 console.log(res);   
 
+//day 5 - remove duplicates from an array
+{
+    let arr = [0,1,1,0,0,5,11,999,9,5,1,0,0,22];
+    arr.sort((a,b) => a-b);
+    let j=0;
+    for(let i=0; i < arr.length;i++){
+        if(arr[i] != arr[i+1]){
+            arr[j] = arr[i];
+            j++;
+        }
+    }
+    arr = arr.slice(0,j);
+    console.log('remove duplicate',arr);
+}
+
+// day 6 - sort arrays of 0,1,2 ( dutch national flag)
+{
+    let arr = [0,1,2,0,1,2];
+    let start = 0, mid = 0, end = arr.length-1;
+
+    while(mid <= end){
+        if(arr[mid] == 0){
+            let temp = arr[start];
+            arr[start] = arr[mid];
+            arr[mid] = temp;
+            start++;
+            mid++;
+        }else if(arr[mid] == 1){
+            mid++;
+        }else{
+            let temp = arr[end];
+            arr[end] = arr[mid];
+            arr[mid] = temp;
+            end--;
+        }
+    }
+
+    console.log('dutch national flag',arr)
+}
